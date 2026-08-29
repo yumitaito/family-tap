@@ -18,8 +18,13 @@ export function subscribeToFamilyReports(
   familyId: string,
   onChange: () => void,
 ): () => void {
+  // チャンネル名は購読ごとにユニークにする。同名だと supabase-js が既存の
+  // （すでに subscribe 済みの）チャンネルを返し、そこに .on() を足そうとして
+  // 「cannot add postgres_changes callbacks after subscribe()」で落ちる
+  // （ホームと履歴が同じ family_id を購読するため実際に衝突していた）。
+  const uniqueId = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
   const channel: RealtimeChannel = supabase
-    .channel(`reports:${familyId}`)
+    .channel(`reports:${familyId}:${uniqueId}`)
     .on(
       'postgres_changes',
       {
