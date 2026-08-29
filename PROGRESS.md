@@ -260,8 +260,11 @@ Homebrew側が2.112.0より新しい修正版を出したら、`brew upgrade sup
 Expo / React Native** に全面移行することを決定。**バックエンド（`supabase/` 配下 = DB
 スキーマ・RLS・RPC・Edge Function）はそのまま再利用**、作り直すのは iOS アプリ本体のみ。
 
-- 移行先: `mobile/`（Expo SDK 57 + expo-router + TypeScript + NativeWind + TanStack Query +
+- 移行先: `mobile/`（Expo **SDK 54** + expo-router + TypeScript + NativeWind + TanStack Query +
   supabase-js）。詳細は [`mobile/README.md`](mobile/README.md)
+  - ※当初 `create-expo-app@latest` が SDK 57 を入れたが、App Store の Expo Go が
+    まだ SDK 57 非対応で実機で「incompatible」エラー。SDK 54（Expo Go 対応の安定版）に
+    ダウングレードした
 - 対象 OS: iOS のみ（当面）。Android は後から足せる構成
 - `FamilyTap/` `FamilyTap.xcodeproj` `project.yml` は **Expo 版の実機確認が済むまで残す**。
   済んだら削除

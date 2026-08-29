@@ -6,7 +6,7 @@ SwiftUI 版からの移行先。バックエンド（Supabase）は `../supabase
 
 | 領域 | 採用 |
 |---|---|
-| フレームワーク | Expo SDK 57 + expo-router（ファイルベースルーティング）+ TypeScript |
+| フレームワーク | Expo SDK 54 + expo-router（ファイルベースルーティング）+ TypeScript |
 | バックエンド接続 | `@supabase/supabase-js` v2 |
 | スタイリング | NativeWind（Tailwind CSS v3 の React Native 版） |
 | サーバーデータ | TanStack Query（`useQuery` / `useMutation`） |
